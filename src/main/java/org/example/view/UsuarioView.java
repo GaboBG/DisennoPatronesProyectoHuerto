@@ -1,7 +1,8 @@
 package org.example.view;
 
-import controller.UsuarioController;
-import model.Usuario;
+
+import org.example.controller.UsuarioController;
+import org.example.model.Usuario;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,7 +14,7 @@ public class UsuarioView {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int opcion;
+        int opcion=0;
 
         do {
             System.out.println("\n========= MENÚ DE USUARIOS =========");
@@ -71,7 +72,7 @@ public class UsuarioView {
 
     private static void setUsuario() {
         Scanner sc = new Scanner(System.in);
-        int id = 0;
+
 
         System.out.print("Ingrese el nombre del usuario: ");
         String nombre = sc.nextLine();
@@ -106,7 +107,7 @@ public class UsuarioView {
         LocalDate fechaRegistro = LocalDate.now();
 
         Usuario usuario = new Usuario(
-                id, nombre, primerApellido, segundoApellido,
+                nombre, primerApellido, segundoApellido,
                 email, contrasenna, rol, estado,
                 fechaNacimiento, fechaRegistro
         );

@@ -1,7 +1,6 @@
 package org.example.controller;
-
-import dao.UsuarioDAO;
-import model.Usuario;
+import org.example.model.Usuario;
+import org.example.dao.UsuarioDAO;
 
 import java.util.List;
 

@@ -29,6 +29,20 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = fechaRegistro;
     }
+    public Usuario(String nombre, String primerApellido, String segundoApellido,
+                   String email, String contrasenna, String rol, boolean estado,
+                   LocalDate fechaNacimiento, LocalDate fechaRegistro) {
+        this.nombre = nombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.email = email;
+        this.contrasenna = contrasenna;
+        this.rol = rol;
+        this.estado = estado;
+        this.fechaNacimiento = fechaNacimiento;
+        this.fechaRegistro = fechaRegistro;
+    }
+
 
 
     public LocalDate getFechaRegistro() {

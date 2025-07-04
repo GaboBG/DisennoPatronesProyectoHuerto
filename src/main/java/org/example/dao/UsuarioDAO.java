@@ -1,7 +1,9 @@
 package org.example.dao;
 
-import misc.Conexion;
-import model.Usuario;
+
+
+import org.example.misc.Conexion;
+import org.example.model.Usuario;
 
 import java.sql.*;
 import java.util.ArrayList;
