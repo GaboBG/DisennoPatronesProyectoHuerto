@@ -12,10 +12,11 @@ import java.util.List;
 
 public class UsuarioDAO {
 
-    public void setUsuario(Usuario usuario) {
+    public int setUsuario(Usuario usuario) {
         String sql = "INSERT INTO huerto_Usuario (nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         try (Connection con = Conexion.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getPrimerApellido());
@@ -28,12 +29,22 @@ public class UsuarioDAO {
             ps.setDate(9, Date.valueOf(usuario.getFechaRegistro()));
 
             ps.executeUpdate();
+
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return -1; // error
     }
 
-    public void updateUsuario(Usuario usuario) {
+
+    public int updateUsuario(Usuario usuario) {
         String sql = "UPDATE huerto_Usuario SET nombre = ?, primerApellido = ?, segundoApellido = ?, email = ?, contrasenna = ?, rol = ?, estado = ?, fechaNacimiento = ?, fechaRegistro = ? WHERE id = ?";
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -49,11 +60,14 @@ public class UsuarioDAO {
             ps.setDate(9, Date.valueOf(usuario.getFechaRegistro()));
             ps.setInt(10, usuario.getId());
 
-            ps.executeUpdate();
+            return ps.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
+            return -1;
         }
     }
+
 
     public List<Usuario> getUsuarios() {
         List<Usuario> lista = new ArrayList<>();

@@ -124,6 +124,18 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
+    protected String getBaseToString() {
+        return "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", primerApellido='" + primerApellido + '\'' +
+                ", segundoApellido='" + segundoApellido + '\'' +
+                ", email='" + email + '\'' +
+                ", contrasenna='" + contrasenna + '\'' +
+                ", rol='" + rol + '\'' +
+                ", estado=" + estado +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", fechaRegistro=" + fechaRegistro;
+    }
 
 
 }
