@@ -106,10 +106,14 @@ public class UsuarioView {
 
         LocalDate fechaRegistro = LocalDate.now();
 
+        System.out.print("Pin: ");
+        String pin = sc.nextLine();
+
+
         Usuario usuario = new Usuario(
                 nombre, primerApellido, segundoApellido,
                 email, contrasenna, rol, estado,
-                fechaNacimiento, fechaRegistro
+                fechaNacimiento, fechaRegistro,pin
         );
 
         controller.setUsuario(usuario);
@@ -153,10 +157,14 @@ public class UsuarioView {
 
         LocalDate fechaRegistro = LocalDate.now();
 
+        System.out.print("Pin: ");
+        String pin = sc.nextLine();
+
+
         Usuario usuario = new Usuario(
                 id, nombre, primerApellido, segundoApellido,
                 email, contrasenna, rol, estado,
-                fechaNacimiento, fechaRegistro
+                fechaNacimiento, fechaRegistro,pin
         );
 
         controller.updateUsuario(usuario);

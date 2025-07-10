@@ -13,7 +13,7 @@ import java.util.List;
 public class UsuarioDAO {
 
     public int setUsuario(Usuario usuario) {
-        String sql = "INSERT INTO huerto_Usuario (nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO huerto_Usuario (nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro, pin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -27,6 +27,7 @@ public class UsuarioDAO {
             ps.setBoolean(7, usuario.isEstado());
             ps.setDate(8, Date.valueOf(usuario.getFechaNacimiento()));
             ps.setDate(9, Date.valueOf(usuario.getFechaRegistro()));
+            ps.setString(10, usuario.getPin());
 
             ps.executeUpdate();
 
@@ -45,7 +46,7 @@ public class UsuarioDAO {
 
 
     public int updateUsuario(Usuario usuario) {
-        String sql = "UPDATE huerto_Usuario SET nombre = ?, primerApellido = ?, segundoApellido = ?, email = ?, contrasenna = ?, rol = ?, estado = ?, fechaNacimiento = ?, fechaRegistro = ? WHERE id = ?";
+        String sql = "UPDATE huerto_Usuario SET nombre = ?, primerApellido = ?, segundoApellido = ?, email = ?, contrasenna = ?, rol = ?, estado = ?, fechaNacimiento = ?, fechaRegistro = ?, pin = ? WHERE id = ?";
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -58,7 +59,8 @@ public class UsuarioDAO {
             ps.setBoolean(7, usuario.isEstado());
             ps.setDate(8, Date.valueOf(usuario.getFechaNacimiento()));
             ps.setDate(9, Date.valueOf(usuario.getFechaRegistro()));
-            ps.setInt(10, usuario.getId());
+            ps.setString(10,usuario.getPin());
+            ps.setInt(11, usuario.getId());
 
             return ps.executeUpdate();
 
@@ -71,7 +73,8 @@ public class UsuarioDAO {
 
     public List<Usuario> getUsuarios() {
         List<Usuario> lista = new ArrayList<>();
-        String sql = "SELECT id, nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro FROM huerto_Usuario";
+        String sql = "SELECT id, nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro, pin FROM huerto_Usuario";
+
 
         try (Connection con = Conexion.getConnection();
              Statement stmt = con.createStatement();
@@ -88,7 +91,8 @@ public class UsuarioDAO {
                         rs.getString("rol"),
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
-                        rs.getDate("fechaRegistro").toLocalDate()
+                        rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin")
                 );
                 lista.add(usuario);
             }
@@ -101,7 +105,8 @@ public class UsuarioDAO {
     }
 
     public Usuario getUsuarioById(int id) {
-        String sql = "SELECT id, nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro FROM huerto_Usuario WHERE id = ?";
+        String sql = "SELECT id, nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro, pin FROM huerto_Usuario";
+
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -119,7 +124,8 @@ public class UsuarioDAO {
                         rs.getString("rol"),
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
-                        rs.getDate("fechaRegistro").toLocalDate()
+                        rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin")
                 );
             }
 
@@ -131,7 +137,7 @@ public class UsuarioDAO {
     }
 
     public Usuario getUsuarioByCorreo(String correo) {
-        String sql = "SELECT id, nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro FROM huerto_Usuario WHERE email = ?";
+        String sql = "SELECT id, nombre, primerApellido, segundoApellido, email, contrasenna, rol, estado, fechaNacimiento, fechaRegistro, pin FROM huerto_Usuario WHERE email = ?";
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -149,7 +155,8 @@ public class UsuarioDAO {
                         rs.getString("rol"),
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
-                        rs.getDate("fechaRegistro").toLocalDate()
+                        rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin")
                 );
             }
 
@@ -159,6 +166,7 @@ public class UsuarioDAO {
 
         return null;
     }
+
 
     public void deleteUsuario(int id) {
         String sql = "DELETE FROM huerto_Usuario WHERE id = ?";

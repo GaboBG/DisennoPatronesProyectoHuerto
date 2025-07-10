@@ -13,7 +13,7 @@ public class ClienteView {
     private static ClienteController controller = new ClienteController();
     private static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void mostrarMenu() {
         int opcion = 0;
 
         do {
@@ -60,7 +60,7 @@ public class ClienteView {
         } while (opcion != 0);
     }
 
-    private static void setCliente() {
+    public static void setCliente() {
         System.out.print("Nombre: ");
         String nombre = sc.nextLine();
 
@@ -92,6 +92,10 @@ public class ClienteView {
 
         LocalDate fechaRegistro = LocalDate.now();
 
+        System.out.print("Pin: ");
+        String pin = sc.nextLine();
+
+
         System.out.print("Zona: ");
         String zona = sc.nextLine();
 
@@ -102,7 +106,7 @@ public class ClienteView {
         int tamannoTerreno = Integer.parseInt(sc.nextLine());
 
         Cliente cliente = new Cliente(0, nombre, primerApellido, segundoApellido, email, contrasenna,
-                rol, estado, fechaNacimiento, fechaRegistro, zona, tipoFinca, tamannoTerreno);
+                rol, estado, fechaNacimiento, fechaRegistro,pin, zona, tipoFinca, tamannoTerreno);
 
         controller.setCliente(cliente);
         System.out.println("Cliente registrado correctamente.");
@@ -142,6 +146,10 @@ public class ClienteView {
 
         LocalDate fechaRegistro = LocalDate.now();
 
+        System.out.print("Pin: ");
+        String pin = sc.nextLine();
+
+
         System.out.print("Zona: ");
         String zona = sc.nextLine();
 
@@ -156,7 +164,7 @@ public class ClienteView {
         Cliente cliente = new Cliente(
                 id,
                 nombre, primerApellido, segundoApellido, email, contrasenna,
-                rol, estado, fechaNacimiento, fechaRegistro,
+                rol, estado, fechaNacimiento, fechaRegistro, pin,
                 zona, tipoFinca, tamannoTerreno
         );
 

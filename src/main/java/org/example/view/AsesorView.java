@@ -12,7 +12,7 @@ public class AsesorView {
     private static AsesorController controller = new AsesorController();
     private static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void mostrarMenu() {
         int opcion = 0;
 
         do {
@@ -59,7 +59,7 @@ public class AsesorView {
         } while (opcion != 0);
     }
 
-    private static void setAsesor() {
+    public static void setAsesor() {
         System.out.print("Nombre: ");
         String nombre = sc.nextLine();
 
@@ -90,6 +90,9 @@ public class AsesorView {
         }
 
         LocalDate fechaRegistro = LocalDate.now();
+        System.out.print("Pin: ");
+        String pin = sc.nextLine();
+
         System.out.print("Especialidad: ");
         String especialidad = sc.nextLine();
 
@@ -101,7 +104,7 @@ public class AsesorView {
 
 
         Asesor asesor = new Asesor(0, nombre, primerApellido, segundoApellido, email, contrasenna,
-                rol, estado, fechaNacimiento, fechaRegistro, especialidad, zona, certificacion);
+                rol, estado, fechaNacimiento, fechaRegistro, pin,especialidad, zona, certificacion);
 
         controller.setAsesor(asesor);
         System.out.println("Asesor registrado correctamente.");
@@ -142,6 +145,10 @@ public class AsesorView {
 
         LocalDate fechaRegistro = LocalDate.now();
 
+        System.out.print("Pin: ");
+        String pin = sc.nextLine();
+
+
         System.out.print("Especialidad: ");
         String especialidad = sc.nextLine();
 
@@ -154,7 +161,7 @@ public class AsesorView {
         Asesor asesor = new Asesor(
                 id,
                 nombre, primerApellido, segundoApellido, email, contrasenna,
-                rol, estado, fechaNacimiento, fechaRegistro,
+                rol, estado, fechaNacimiento, fechaRegistro,pin,
                 especialidad, zona, certificacion
         );
 

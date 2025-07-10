@@ -83,6 +83,7 @@ public class ClienteDAO extends UsuarioDAO {
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
                         rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin"),
                         rs.getString("zona"),
                         rs.getString("tipoFinca"),
                         rs.getInt("tamannoTerreno")
@@ -120,6 +121,7 @@ public class ClienteDAO extends UsuarioDAO {
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
                         rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin"),
                         rs.getString("zona"),
                         rs.getString("tipoFinca"),
                         rs.getInt("tamannoTerreno")
@@ -153,6 +155,7 @@ public class ClienteDAO extends UsuarioDAO {
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
                         rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin"),
                         rs.getString("zona"),
                         rs.getString("tipoFinca"),
                         rs.getInt("tamannoTerreno")

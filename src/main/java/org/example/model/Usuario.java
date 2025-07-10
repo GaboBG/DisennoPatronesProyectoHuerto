@@ -13,11 +13,12 @@ public class Usuario {
     private boolean estado;
     private LocalDate fechaNacimiento;
     private LocalDate fechaRegistro;
+    private String pin;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String primerApellido, String segundoApellido, String email, String contrasenna, String rol, boolean estado, LocalDate fechaNacimiento, LocalDate fechaRegistro) {
+    public Usuario(int id, String nombre, String primerApellido, String segundoApellido, String email, String contrasenna, String rol, boolean estado, LocalDate fechaNacimiento, LocalDate fechaRegistro, String pin) {
         this.id = id;
         this.nombre = nombre;
         this.primerApellido = primerApellido;
@@ -28,10 +29,11 @@ public class Usuario {
         this.estado = estado;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = fechaRegistro;
+        this.pin = pin;
     }
     public Usuario(String nombre, String primerApellido, String segundoApellido,
                    String email, String contrasenna, String rol, boolean estado,
-                   LocalDate fechaNacimiento, LocalDate fechaRegistro) {
+                   LocalDate fechaNacimiento, LocalDate fechaRegistro, String pin) {
         this.nombre = nombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
@@ -41,6 +43,7 @@ public class Usuario {
         this.estado = estado;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = fechaRegistro;
+        this.pin = pin;
     }
 
 
@@ -121,6 +124,14 @@ public class Usuario {
         return id;
     }
 
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -134,7 +145,8 @@ public class Usuario {
                 ", rol='" + rol + '\'' +
                 ", estado=" + estado +
                 ", fechaNacimiento=" + fechaNacimiento +
-                ", fechaRegistro=" + fechaRegistro;
+                ", fechaRegistro=" + fechaRegistro +
+                ", pin="+ pin;
     }
 
 

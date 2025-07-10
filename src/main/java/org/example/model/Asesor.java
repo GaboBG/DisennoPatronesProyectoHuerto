@@ -7,9 +7,9 @@ public class Asesor extends Usuario{
     private String zona;
     private String certificacion;
     public Asesor(int id, String nombre, String primerApellido, String segundoApellido, String email,
-                   String contrasenna, String rol, boolean estado, LocalDate fechaNacimiento, LocalDate fechaRegistro,
+                   String contrasenna, String rol, boolean estado, LocalDate fechaNacimiento, LocalDate fechaRegistro, String pin,
                    String zona, String especialidad, String certificacion) {
-        super(id, nombre, primerApellido, segundoApellido, email, contrasenna, "Asesor", estado, fechaNacimiento, fechaRegistro);
+        super(id, nombre, primerApellido, segundoApellido, email, contrasenna, "Asesor", estado, fechaNacimiento, fechaRegistro, pin);
         this.zona = zona;
         this.certificacion = certificacion;
         this.especialidad = especialidad;

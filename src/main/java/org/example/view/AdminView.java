@@ -11,7 +11,7 @@ public class AdminView {
     private static AdminController controller = new AdminController();
     private static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void mostrarMenu() {
         int opcion = 0;
 
         do {
@@ -90,10 +90,11 @@ public class AdminView {
 
         LocalDate fechaRegistro = LocalDate.now();
 
-
+        System.out.print("Pin: ");
+        String pin = sc.nextLine();
 
         Admin admin = new Admin(0, nombre, primerApellido, segundoApellido, email, contrasenna,
-                rol, estado, fechaNacimiento, fechaRegistro);
+                rol, estado, fechaNacimiento, fechaRegistro, pin);
 
         controller.setAdmin(admin);
         System.out.println("Admin registrado correctamente.");
@@ -134,11 +135,14 @@ public class AdminView {
 
         LocalDate fechaRegistro = LocalDate.now();
 
+        System.out.print("Pin: ");
+        String pin = sc.nextLine();
+
 
         Admin admin = new Admin(
                 id,
                 nombre, primerApellido, segundoApellido, email, contrasenna,
-                rol, estado, fechaNacimiento, fechaRegistro
+                rol, estado, fechaNacimiento, fechaRegistro, pin
         );
 
         controller.updateAdmin(admin);

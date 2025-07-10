@@ -12,9 +12,9 @@ public class Cliente extends Usuario {
 
 
     public Cliente(int id, String nombre, String primerApellido, String segundoApellido, String email,
-                   String contrasenna, String rol, boolean estado, LocalDate fechaNacimiento, LocalDate fechaRegistro,
+                   String contrasenna, String rol, boolean estado, LocalDate fechaNacimiento, LocalDate fechaRegistro, String pin,
                    String zona, String tipoFinca, int tamannoTerreno) {
-        super(id, nombre, primerApellido, segundoApellido, email, contrasenna, "Cliente", estado, fechaNacimiento, fechaRegistro);
+        super(id, nombre, primerApellido, segundoApellido, email, contrasenna, "Cliente", estado, fechaNacimiento, fechaRegistro, pin);
         this.zona = zona;
         this.tipoFinca = tipoFinca;
         this.tamannoTerreno = tamannoTerreno;

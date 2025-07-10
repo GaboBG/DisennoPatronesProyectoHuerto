@@ -64,7 +64,8 @@ public class AdminDAO extends UsuarioDAO {
                         rs.getString("rol"),
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
-                        rs.getDate("fechaRegistro").toLocalDate()
+                        rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin")
                 );
             }
 
@@ -97,7 +98,8 @@ public class AdminDAO extends UsuarioDAO {
                         rs.getString("rol"),
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
-                        rs.getDate("fechaRegistro").toLocalDate()
+                        rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin")
                 );
             }
 
@@ -128,7 +130,8 @@ public class AdminDAO extends UsuarioDAO {
                         rs.getString("rol"),
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
-                        rs.getDate("fechaRegistro").toLocalDate()
+                        rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin")
                 );
                 lista.add(admin);
             }

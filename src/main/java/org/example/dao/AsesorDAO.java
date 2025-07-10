@@ -86,6 +86,7 @@ public class AsesorDAO extends UsuarioDAO {
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
                         rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin"),
                         rs.getString("zona"),
                         rs.getString("especialidad"),
                         rs.getString("certificacion")
@@ -123,6 +124,7 @@ public class AsesorDAO extends UsuarioDAO {
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
                         rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin"),
                         rs.getString("zona"),
                         rs.getString("especialidad"),
                         rs.getString("certificacion")
@@ -157,6 +159,7 @@ public class AsesorDAO extends UsuarioDAO {
                         rs.getBoolean("estado"),
                         rs.getDate("fechaNacimiento").toLocalDate(),
                         rs.getDate("fechaRegistro").toLocalDate(),
+                        rs.getString("pin"),
                         rs.getString("zona"),
                         rs.getString("especialidad"),
                         rs.getString("certificacion")
