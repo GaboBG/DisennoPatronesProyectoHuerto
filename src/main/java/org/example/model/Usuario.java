@@ -1,6 +1,7 @@
 package org.example.model;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Usuario {
     private int id;
@@ -130,6 +131,12 @@ public class Usuario {
 
     public void setPin(String pin) {
         this.pin = pin;
+    }
+    public int getEdad() {
+        if (fechaNacimiento != null) {
+            return Period.between(fechaNacimiento, LocalDate.now()).getYears();
+        }
+        return 0; // o lanzar excepción si lo prefieres
     }
 
     public void setId(int id) {

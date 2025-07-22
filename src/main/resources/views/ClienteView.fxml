@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.ClienteFXController">
+
+    <center>
+        <VBox fx:id="contentArea" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <!-- Perfil usuario: se llena dinámicamente -->
+        </VBox>
+    </center>
+
+
+    <right>
+        <VBox spacing="10" style="-fx-background-color: #ececec;" prefWidth="200">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Menú Cliente" style="-fx-font-weight: bold;"/>
+            <Button text="Mi Perfil"/>
+            <Button text="Mis Pedidos" />
+            <Button text="Soporte"/>
+        </VBox>
+    </right>
+</BorderPane>

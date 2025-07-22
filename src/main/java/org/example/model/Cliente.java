@@ -7,7 +7,7 @@ public class Cliente extends Usuario {
     private String tipoFinca;
     private int tamannoTerreno;
 
-    public Cliente() {
+    public Cliente(int i, String nombre, String apellido1, String apellido2, String email, String contrasenna, boolean estado, LocalDate fechaNacimiento, LocalDate fechaRegistro, String pin) {
     }
 
 
