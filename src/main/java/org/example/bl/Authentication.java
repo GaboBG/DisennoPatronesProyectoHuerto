@@ -23,7 +23,16 @@ public class Authentication {
         }
 
         if (usuario.getContrasenna().equals(contrasenna) && usuario.getRol().equalsIgnoreCase(rol)) {
-            return usuario;
+            switch (rol.toLowerCase()) {
+                case "admin":
+                    return new AdminDAO().getAdminByCorreo(correo);   // devuelve Admin concreto
+                case "asesor":
+                    return new AsesorDAO().getAsesorByCorreo(correo); // devuelve Asesor concreto
+                case "cliente":
+                    return new ClienteDAO().getClienteByCorreo(correo);// devuelve Cliente concreto
+                default:
+                    return usuario;  // fallback a Usuario base (o null)
+            }
         }
 
         System.out.println("Correo o contraseña incorrectos.");
