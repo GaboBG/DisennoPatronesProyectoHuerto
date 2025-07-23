@@ -72,7 +72,7 @@ public class PlantaView {
             System.out.print("Ingrese ID de la planta a modificar: ");
             int id = leerEntero();
 
-            List<Planta> plantas = plantaController.getPlanta();
+            List<Planta> plantas = plantaController.getPlantas();
             Planta plantaModificar = buscarPorId(plantas, id, Planta::getIdPlanta, "planta");
             if (esNulo(plantaModificar)) return;
 
@@ -106,7 +106,7 @@ public class PlantaView {
             System.out.print("Ingrese ID de la planta a eliminar: ");
             int id = leerEntero();
 
-            List<Planta> plantas = plantaController.getPlanta();
+            List<Planta> plantas = plantaController.getPlantas();
             Planta eliminarPlanta = buscarPorId(plantas, id, Planta::getIdPlanta, "planta");
             if (esNulo(eliminarPlanta)) return;
 
@@ -119,7 +119,7 @@ public class PlantaView {
 
     private static void consultarPlantas() {
         try {
-            List<Planta> lista = plantaController.getPlanta();
+            List<Planta> lista = plantaController.getPlantas();
 
             if (esListaVacia(lista)) {
                 System.out.println("No hay plantas registradas.");

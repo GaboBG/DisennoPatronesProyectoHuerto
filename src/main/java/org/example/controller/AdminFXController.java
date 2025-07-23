@@ -1,10 +1,12 @@
 package org.example.controller;
 
+import Util.FXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.example.model.Admin;
 
 import java.io.IOException;
@@ -50,6 +52,11 @@ public class AdminFXController {
         cargarVista("/views/GestionClienteView.fxml");
     }
 
+    @FXML
+    public void mostrarPlantas() {
+        cargarVista("/views/GestionPlantaView.fxml");
+    }
+
     private void cargarVista(String rutaFXML) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
@@ -60,6 +67,11 @@ public class AdminFXController {
             e.printStackTrace();
             System.err.println("Error al cargar la vista: " + rutaFXML);
         }
+    }
+    @FXML
+    private void cerrarSesion() {
+        Stage stage = (Stage) contentArea.getScene().getWindow();
+        FXUtils.cerrarSesion(stage);
     }
 
 

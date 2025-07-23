@@ -1,7 +1,9 @@
 package org.example.controller;
+import Util.FXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.example.model.Asesor;
 public class AsesorFXController {
     @FXML
@@ -42,5 +44,10 @@ public class AsesorFXController {
         contentArea.getChildren().clear();
         Label label = new Label("Aquí se muestra la agenda.");
         contentArea.getChildren().add(label);
+    }
+    @FXML
+    private void cerrarSesion() {
+        Stage stage = (Stage) contentArea.getScene().getWindow();
+        FXUtils.cerrarSesion(stage);
     }
 }

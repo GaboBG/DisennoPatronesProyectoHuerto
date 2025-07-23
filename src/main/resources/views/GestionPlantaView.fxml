@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controller.GestionPlantaFXController"
+      spacing="15">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Gestión de Planta"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <TableView fx:id="plantaTable" prefHeight="300" VBox.vgrow="ALWAYS" editable="false">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150" />
+            <TableColumn fx:id="colClima" text="Clima" prefWidth="150" />
+            <TableColumn fx:id="colFrecuencia" text="Frecuencia" prefWidth="150" />
+            <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="150" />
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="80" />
+            <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="180" />
+        </columns>
+    </TableView>
+
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints minWidth="120" />
+            <ColumnConstraints minWidth="200" />
+        </columnConstraints>
+
+        <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="nombreField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Clima:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="climaField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Frecuencia:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="frecuenciaField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Descripción:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="descripcionField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Estado:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <CheckBox fx:id="estadoCheck" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <Separator />
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Agregar Planta" onAction="#agregarPlanta"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;" />
+        <Button text="Editar Planta" onAction="#editarPlanta"
+                style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold;" />
+    </HBox>
+
+    <Label fx:id="statusLabel" text="" style="-fx-font-weight: bold;" />
+
+</VBox>

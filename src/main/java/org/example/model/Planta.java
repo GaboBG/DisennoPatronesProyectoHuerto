@@ -73,4 +73,9 @@ public class Planta {
         this.descripcion = descripcion;
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return nombre; // o incluso puedes hacer: return nombre + " - " + clima;
+    }
 }
