@@ -26,6 +26,8 @@
             <Button text="Mi Perfil" />
             <Button text="Mis Clientes"/>
             <Button text="Agenda" />
+            <Button text="Cerrar Sesión" onAction="#cerrarSesion"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" />
         </VBox>
     </right>
 </BorderPane>
