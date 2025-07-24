@@ -1,6 +1,7 @@
 package org.example.controller;
 
-import Util.FXUtils;
+import javafx.scene.control.Button;
+import org.example.Util.FXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,12 +32,46 @@ public class ClienteFXController {
         Label titulo = new Label("Perfil del Cliente");
         titulo.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
 
-        Label nombre = new Label("Nombre: " + clienteLogueado.getNombre() + " " + clienteLogueado.getPrimerApellido());
+        Label nombre = new Label("Nombre: " + clienteLogueado.getNombre());
+        Label apellido1 = new Label("Primer Apellido: " + clienteLogueado.getPrimerApellido());
+        Label apellido2 = new Label("Segundo Apellido: " + clienteLogueado.getSegundoApellido());
         Label email = new Label("Correo: " + clienteLogueado.getEmail());
-        // Puedes agregar más información como teléfono, cédula, etc.
+        Label fechaNacimiento = new Label("Fecha Nacimiento: " + clienteLogueado.getFechaNacimiento());
+        Label fechaRegistro = new Label("Fecha Registro: " + clienteLogueado.getFechaRegistro());
+        Label zona = new Label("Zona: " + clienteLogueado.getZona());
+        Label tipoFinca = new Label("Tipo Finca: " + clienteLogueado.getTipoFinca());
+        Label tamanno = new Label("Tamaño Terreno: " + clienteLogueado.getTamannoTerreno() + " m²");
+        Label estado = new Label("Estado: " + (clienteLogueado.isEstado() ? "Activo" : "Inactivo"));
 
-        contentArea.getChildren().addAll(titulo, nombre, email);
+        Button btnEditar = new Button("Editar Perfil");
+        btnEditar.setOnAction(e -> mostrarFormularioEditarPerfil());
+
+        VBox perfilBox = new VBox(10, titulo, nombre, apellido1, apellido2, email, fechaNacimiento,
+                fechaRegistro, zona, tipoFinca, tamanno, estado, btnEditar);
+
+        contentArea.getChildren().add(perfilBox);
     }
+    @FXML
+    public void mostrarFormularioEditarPerfil() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EditarPerfilClienteView.fxml"));
+
+            Node form = loader.load();
+
+            EditarPerfilClienteFXController controller = loader.getController();
+            controller.setCliente(clienteLogueado);
+
+            contentArea.getChildren().setAll(form);
+        } catch (IOException e) {
+            e.printStackTrace();
+            contentArea.getChildren().clear();
+            Label errorLabel = new Label("Error al cargar formulario de edición");
+            contentArea.getChildren().add(errorLabel);
+        }
+    }
+
+
+
 
     @FXML
     public void mostrarCultivos() {

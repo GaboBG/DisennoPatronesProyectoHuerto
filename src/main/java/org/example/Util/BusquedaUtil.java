@@ -1,9 +1,9 @@
-package Util;
+package org.example.Util;
 
 import java.util.List;
 import java.util.function.Function;
 
-import static Util.ValidacionUtil.esListaVacia;
+import static org.example.Util.ValidacionUtil.esListaVacia;
 
 public class BusquedaUtil {
 

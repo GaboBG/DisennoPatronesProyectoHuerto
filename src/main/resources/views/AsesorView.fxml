@@ -3,31 +3,40 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.controller.AsesorFXController">
 
-    <center>
-        <VBox fx:id="contentArea" spacing="10">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-            <!-- Perfil usuario: se llena dinámicamente -->
-        </VBox>
-    </center>
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #2c3e50;" prefWidth="220">
+            <padding><Insets top="15" left="10" right="10" bottom="10"/></padding>
 
+            <Label text="Menú Principal"
+                   style="-fx-font-size: 16px; -fx-text-fill: white; -fx-font-weight: bold;" />
 
-    <right>
-        <VBox spacing="10" style="-fx-background-color: #ececec;" prefWidth="200">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <Label text="Menú Asesor" style="-fx-font-weight: bold;"/>
-            <Button text="Mi Perfil" />
-            <Button text="Mis Clientes"/>
-            <Button text="Agenda" />
+            <Button text="Mi Perfil" onAction="#mostrarPerfil"
+                    style="-fx-background-color: #2c3e50; -fx-text-fill: white;" />
+
+            <Button text="Clientes" onAction="#mostrarClientes"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;" />
+
+            <Button text="Agenda" onAction="#mostrarAgenda"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;" />
+
             <Button text="Cerrar Sesión" onAction="#cerrarSesion"
                     style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" />
         </VBox>
-    </right>
+    </left>
+
+    <center>
+        <VBox fx:id="contentArea" spacing="10">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="Bienvenido al Panel del Asesor"
+                   style="-fx-font-size: 18px;" />
+        </VBox>
+    </center>
 </BorderPane>
+
+

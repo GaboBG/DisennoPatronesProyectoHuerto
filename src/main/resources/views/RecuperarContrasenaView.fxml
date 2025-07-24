@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.HBox?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.RecuperarContrasenaFXController"
+      spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+
+    <Label text="Recuperar Contraseña" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <Label text="Correo:"/>
+    <TextField fx:id="correoField" promptText="Introduce tu correo"/>
+
+    <Label text="PIN de recuperación:"/>
+    <TextField fx:id="pinField" promptText="Introduce tu PIN"/>
+
+    <Label text="Nueva Contraseña:"/>
+    <PasswordField fx:id="nuevaContrasenaField" promptText="Nueva contraseña"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Volver a Login" onAction="#volverLogin"/>
+        <Button text="Recuperar Contraseña" onAction="#recuperarContrasena"/>
+    </HBox>
+
+    <Label fx:id="statusLabel" style="-fx-text-fill: red;"/>
+
+</VBox>

@@ -5,10 +5,10 @@ import org.example.model.Planta;
 
 import java.util.List;
 
-import static Util.BusquedaUtil.buscarPorId;
-import static Util.ValidacionUtil.esListaVacia;
-import static Util.ValidacionUtil.esNulo;
-import static Util.inputUtil.*;
+import static org.example.Util.BusquedaUtil.buscarPorId;
+import static org.example.Util.ValidacionUtil.esListaVacia;
+import static org.example.Util.ValidacionUtil.esNulo;
+import static org.example.Util.inputUtil.*;
 
 
 public class PlantaView {

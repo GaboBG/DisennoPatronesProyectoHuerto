@@ -20,6 +20,10 @@ public class Cliente extends Usuario {
         this.tamannoTerreno = tamannoTerreno;
     }
 
+    public Cliente(int i, String nombre, String apellido1, String apellido2, String email, String contrasenna, boolean estado, LocalDate fechaNacimiento, String pin, String zona, String tipoFinca, int tamannoTerreno) {
+
+    }
+
     public String getZona() {
         return zona;
     }

@@ -15,11 +15,11 @@
             <Label text="Menú Principal"
                    style="-fx-font-size: 16px; -fx-text-fill: white; -fx-font-weight: bold;" />
 
-            <!-- Botón Mi Perfil -->
             <Button text="Mi Perfil" onAction="#mostrarPerfil"
                     style="-fx-background-color: #2c3e50; -fx-text-fill: white;" />
 
-            <!-- Otras secciones del cliente -->
+
+
             <Button text="Cultivos" fx:id="btnCultivos" onAction="#mostrarCultivos"
                     style="-fx-background-color: transparent; -fx-text-fill: white;" />
 
@@ -31,6 +31,7 @@
 
             <Button text="Reportes" fx:id="btnReportes" onAction="#mostrarReportes"
                     style="-fx-background-color: transparent; -fx-text-fill: white;" />
+
             <Button text="Cerrar Sesión" onAction="#cerrarSesion"
                     style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" />
         </VBox>

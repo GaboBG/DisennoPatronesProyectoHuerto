@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controller.EditarPerfilClienteFXController"
+      spacing="10">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Editar Perfil Cliente" style="-fx-font-weight: bold; -fx-font-size: 18px;" />
+
+    <HBox spacing="10">
+        <Label text="Nombre:" prefWidth="150"/>
+        <TextField fx:id="nombreField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Primer Apellido:" prefWidth="150"/>
+        <TextField fx:id="apellido1Field" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Segundo Apellido:" prefWidth="150"/>
+        <TextField fx:id="apellido2Field" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Correo:" prefWidth="150"/>
+        <TextField fx:id="emailField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Contraseña:" prefWidth="150"/>
+        <PasswordField fx:id="passwordField" disable="true" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="PIN para cambiar contraseña:" prefWidth="150"/>
+        <PasswordField fx:id="pinVerificacionField" onKeyReleased="#verificarPin" />
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Fecha Nacimiento:" prefWidth="150"/>
+        <DatePicker fx:id="fechaNacimientoPicker" />
+    </HBox>
+
+
+
+    <HBox spacing="10">
+        <Label text="Zona:" prefWidth="150"/>
+        <TextField fx:id="zonaField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Tipo Finca:" prefWidth="150"/>
+        <TextField fx:id="tipoFincaField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Tamaño Terreno (m²):" prefWidth="150"/>
+        <TextField fx:id="tamannoTerrenoField" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Estado:" prefWidth="150"/>
+        <CheckBox fx:id="estadoCheck" text="Activo" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Guardar" onAction="#guardarCambios" />
+        <Button text="Cancelar" onAction="#cancelarEdicion" />
+    </HBox>
+
+    <Label fx:id="statusLabel" style="-fx-text-fill: red;" />
+
+</VBox>

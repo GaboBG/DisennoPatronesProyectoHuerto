@@ -9,11 +9,11 @@ import javafx.scene.Parent;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/inicio.fxml")); // Cambiado de login.fxml a inicio.fxml
 
         Parent root = loader.load();
 
-        primaryStage.setTitle("Login");
+        primaryStage.setTitle("Gestión de Huertos - Inicio");
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();
     }

@@ -12,6 +12,9 @@
 
     <Button text="Iniciar Sesión" onAction="#handleLogin"/>
     <Button text="Recuperar Contraseña" onAction="#handleRecuperarContrasenna"/>
+    <Button text="Volver a Inicio" onAction="#volverInicio"
+            style="-fx-background-color: #bdc3c7; -fx-text-fill: black;" />
+
 
     <Label fx:id="lblMensaje" style="-fx-text-fill: red;"/>
 </VBox>
