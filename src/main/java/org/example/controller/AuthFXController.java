@@ -38,6 +38,13 @@ public class AuthFXController {
             return;
         }
 
+        // ⛔ Verificación de estado inactivo
+        if (!usuario.isEstado()) {
+            lblMensaje.setStyle("-fx-text-fill: red;");
+            lblMensaje.setText("Tu cuenta está inactiva. Contacta al administrador.");
+            return;
+        }
+
         String rol = usuario.getRol();
         Usuario logueado = authController.login(correo, contrasenna, rol);
 
@@ -59,7 +66,7 @@ public class AuthFXController {
 
                 Parent root = loader.load();
 
-                // Obtener el controlador de la vista cargada para pasar el usuario logueado
+                // Pasar el usuario al controlador de la vista cargada
                 Object controller = loader.getController();
 
                 if (controller instanceof AdminFXController && "admin".equalsIgnoreCase(rol)) {
@@ -86,8 +93,39 @@ public class AuthFXController {
         }
     }
 
+
     @FXML
     public void handleRecuperarContrasenna() {
-        lblMensaje.setText("Funcionalidad aún no implementada.");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecuperarContrasenaView.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) txtCorreo.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Recuperar Contraseña");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            lblMensaje.setText("No se pudo cargar la vista de recuperación.");
+        }
     }
+
+
+
+    @FXML
+    public void volverInicio() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/inicio.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) txtCorreo.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Gestión Huertos - Inicio");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            lblMensaje.setText("No se pudo volver al inicio.");
+        }
+    }
+
 }

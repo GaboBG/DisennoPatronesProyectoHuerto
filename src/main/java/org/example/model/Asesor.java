@@ -15,6 +15,10 @@ public class Asesor extends Usuario{
         this.especialidad = especialidad;
     }
 
+    public Asesor(int i, String nombre, String apellido1, String apellido2, String email, String contrasenna, boolean estado, LocalDate fechaNacimiento, String pin, String zona, String especialidad, String certificacion) {
+
+    }
+
     public String getEspecialidad() {
         return especialidad;
     }

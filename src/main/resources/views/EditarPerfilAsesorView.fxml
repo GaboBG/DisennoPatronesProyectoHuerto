@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controller.EditarPerfilAsesorFXController"
+      spacing="10">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Editar Perfil Asesor" style="-fx-font-weight: bold; -fx-font-size: 18px;" />
+
+    <HBox spacing="10">
+        <Label text="Nombre:" prefWidth="150"/>
+        <TextField fx:id="nombreField"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Primer Apellido:" prefWidth="150"/>
+        <TextField fx:id="apellido1Field"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Segundo Apellido:" prefWidth="150"/>
+        <TextField fx:id="apellido2Field"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Correo:" prefWidth="150"/>
+        <TextField fx:id="emailField"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Especialidad:" prefWidth="150"/>
+        <TextField fx:id="especialidadField"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Zona:" prefWidth="150"/>
+        <TextField fx:id="zonaField"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Certificación:" prefWidth="150"/>
+        <TextField fx:id="certificacionField"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Estado:" prefWidth="150"/>
+        <CheckBox fx:id="estadoCheck" text="Activo"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Guardar" onAction="#guardarCambios"/>
+        <Button text="Cancelar" onAction="#cancelarEdicion"/>
+    </HBox>
+
+    <Label fx:id="statusLabel" style="-fx-text-fill: red;" />
+
+</VBox>

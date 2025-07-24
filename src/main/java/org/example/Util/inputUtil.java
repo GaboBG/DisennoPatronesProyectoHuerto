@@ -1,9 +1,9 @@
-package Util;
+package org.example.Util;
 
 import java.sql.Date;
 import java.util.Scanner;
 
-import static Util.ValidacionUtil.*;
+import static org.example.Util.ValidacionUtil.*;
 
 
 public class inputUtil {

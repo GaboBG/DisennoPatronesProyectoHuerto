@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controller.EditarPerfilAdminFXController"
+      spacing="10">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Editar Perfil" style="-fx-font-weight: bold; -fx-font-size: 18px;" />
+
+    <HBox spacing="10">
+        <Label text="Nombre:" prefWidth="120"/>
+        <TextField fx:id="nombreField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Primer Apellido:" prefWidth="120"/>
+        <TextField fx:id="apellido1Field" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Segundo Apellido:" prefWidth="120"/>
+        <TextField fx:id="apellido2Field" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Correo:" prefWidth="120"/>
+        <TextField fx:id="correoField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Fecha Nacimiento:" prefWidth="120"/>
+        <DatePicker fx:id="fechaNacimientoPicker" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Estado:" prefWidth="120"/>
+        <CheckBox fx:id="estadoCheckBox" text="Activo" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Guardar" onAction="#guardarCambios" />
+
+    </HBox>
+
+    <Label fx:id="mensajeLabel" style="-fx-text-fill: red;" />
+
+</VBox>
