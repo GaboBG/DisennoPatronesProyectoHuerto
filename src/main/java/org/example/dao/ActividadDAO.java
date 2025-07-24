@@ -4,6 +4,7 @@ import org.example.misc.Conexion;
 import org.example.model.Actividad;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,17 +13,17 @@ public class ActividadDAO {
     private final String tabla = "huerto_Actividad";
 
     public int setActividad(Actividad actividad) {
-        String sql = "INSERT INTO " + tabla + " (nombre, clima, tipoSuelo, frecuenciaRiego, descripcion, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO " + tabla + " (idCultivo, nombre, tipoActividad, fechaProgramada, descripcion, realizada) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            ps.setString(1, actividad.getNombre());
-            ps.setString(2, actividad.getClima());
-            ps.setString(3, actividad.getTipoSuelo());
-            ps.setString(4, actividad.getFrecuenciaRiego());
+            ps.setInt(1, actividad.getIdCultivo());
+            ps.setString(2, actividad.getNombre());
+            ps.setString(3, actividad.getTipoActividad());
+            ps.setDate(4, Date.valueOf(actividad.getFechaProgramada()));
             ps.setString(5, actividad.getDescripcion());
-            ps.setBoolean(6, actividad.isEstado());
+            ps.setBoolean(6, actividad.isRealizada());
 
             ps.executeUpdate();
 
@@ -40,17 +41,17 @@ public class ActividadDAO {
     }
 
     public int updateActividad(Actividad actividad) {
-        String sql = "UPDATE " + tabla + " SET nombre = ?, clima = ?, tipoSuelo = ?, frecuenciaRiego = ?, descripcion = ?, estado = ? WHERE idActividad = ?";
+        String sql = "UPDATE " + tabla + " SET idCultivo = ?, nombre = ?, tipoActividad = ?, fechaProgramada = ?, descripcion = ?, realizada = ? WHERE idActividad = ?";
 
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, actividad.getNombre());
-            ps.setString(2, actividad.getClima());
-            ps.setString(3, actividad.getTipoSuelo());
-            ps.setString(4, actividad.getFrecuenciaRiego());
+            ps.setInt(1, actividad.getIdCultivo());
+            ps.setString(2, actividad.getNombre());
+            ps.setString(3, actividad.getTipoActividad());
+            ps.setDate(4, Date.valueOf(actividad.getFechaProgramada()));
             ps.setString(5, actividad.getDescripcion());
-            ps.setBoolean(6, actividad.isEstado());
+            ps.setBoolean(6, actividad.isRealizada());
             ps.setInt(7, actividad.getIdActividad());
 
             return ps.executeUpdate();
@@ -63,7 +64,7 @@ public class ActividadDAO {
 
     public List<Actividad> getActividades() {
         List<Actividad> lista = new ArrayList<>();
-        String sql = "SELECT idActividad, nombre, clima, tipoSuelo, frecuenciaRiego, descripcion, estado FROM " + tabla;
+        String sql = "SELECT idActividad, idCultivo, nombre, tipoActividad, fechaProgramada, descripcion, realizada FROM " + tabla;
 
         try (Connection con = Conexion.getConnection();
              Statement stmt = con.createStatement();
@@ -72,12 +73,12 @@ public class ActividadDAO {
             while (rs.next()) {
                 Actividad actividad = new Actividad(
                         rs.getInt("idActividad"),
+                        rs.getInt("idCultivo"),
                         rs.getString("nombre"),
-                        rs.getString("clima"),
-                        rs.getString("tipoSuelo"),
-                        rs.getString("frecuenciaRiego"),
+                        rs.getString("tipoActividad"),
+                        rs.getDate("fechaProgramada").toLocalDate(),
                         rs.getString("descripcion"),
-                        rs.getBoolean("estado")
+                        rs.getBoolean("realizada")
                 );
                 lista.add(actividad);
             }
@@ -90,7 +91,7 @@ public class ActividadDAO {
     }
 
     public Actividad getActividadById(int id) {
-        String sql = "SELECT idActividad, nombre, clima, tipoSuelo, frecuenciaRiego, descripcion, estado FROM " + tabla + " WHERE idActividad = ?";
+        String sql = "SELECT idActividad, idCultivo, nombre, tipoActividad, fechaProgramada, descripcion, realizada FROM " + tabla + " WHERE idActividad = ?";
 
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -101,12 +102,12 @@ public class ActividadDAO {
             if (rs.next()) {
                 return new Actividad(
                         rs.getInt("idActividad"),
+                        rs.getInt("idCultivo"),
                         rs.getString("nombre"),
-                        rs.getString("clima"),
-                        rs.getString("tipoSuelo"),
-                        rs.getString("frecuenciaRiego"),
+                        rs.getString("tipoActividad"),
+                        rs.getDate("fechaProgramada").toLocalDate(),
                         rs.getString("descripcion"),
-                        rs.getBoolean("estado")
+                        rs.getBoolean("realizada")
                 );
             }
 
@@ -118,7 +119,7 @@ public class ActividadDAO {
     }
 
     public Actividad getActividadByName(String name) {
-        String sql = "SELECT idActividad, nombre, clima, tipoSuelo, frecuenciaRiego, descripcion, estado FROM " + tabla + " WHERE nombre = ?";
+        String sql = "SELECT idActividad, idCultivo, nombre, tipoActividad, fechaProgramada, descripcion, realizada FROM " + tabla + " WHERE name = ?";
 
         try (Connection con = Conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -129,12 +130,12 @@ public class ActividadDAO {
             if (rs.next()) {
                 return new Actividad(
                         rs.getInt("idActividad"),
+                        rs.getInt("idCultivo"),
                         rs.getString("nombre"),
-                        rs.getString("clima"),
-                        rs.getString("tipoSuelo"),
-                        rs.getString("frecuenciaRiego"),
+                        rs.getString("tipoActividad"),
+                        rs.getDate("fechaProgramada").toLocalDate(),
                         rs.getString("descripcion"),
-                        rs.getBoolean("estado")
+                        rs.getBoolean("realizada")
                 );
             }
 
@@ -144,6 +145,9 @@ public class ActividadDAO {
 
         return null;
     }
+
+
+
 
     public void deleteActividad(int id) {
         String sql = "DELETE FROM " + tabla + " WHERE idActividad = ?";
@@ -158,5 +162,4 @@ public class ActividadDAO {
             e.printStackTrace();
         }
     }
-
 }

@@ -1,6 +1,7 @@
 package org.example.Util;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import static org.example.Util.ValidacionUtil.*;
@@ -39,15 +40,16 @@ public class inputUtil {
         }
     }
 
-    public static Date leerFecha() {
+    public static LocalDate leerFecha() {
         while (true) {
             String fechaStr = sc.nextLine().trim();
             if (esFechaValida(fechaStr)) {
-                return Date.valueOf(fechaStr);
+                return LocalDate.parse(fechaStr); // Convierte directamente a LocalDate
             }
             System.out.println("Fecha inválida. Debe tener el formato YYYY-MM-DD y ser una fecha real.");
         }
     }
+
 
     public static int leerEnteroOpcional(String mensaje, int valorActual) {
         System.out.print(mensaje + " (actual: " + valorActual + ") (dejar en blanco para no cambiar): ");

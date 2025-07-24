@@ -3,6 +3,7 @@ package org.example.view;
 import org.example.controller.ActividadController;
 import org.example.model.Actividad;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.example.Util.BusquedaUtil.buscarPorId;
@@ -31,7 +32,9 @@ public class ActividadView {
                 case "2" -> modificarActividad();
                 case "3" -> eliminarActividad();
                 case "4" -> consultarActividades();
-                case "5" -> { return; }
+                case "5" -> {
+                    return;
+                }
                 default -> System.out.println("Opción inválida.");
             }
         }
@@ -39,26 +42,26 @@ public class ActividadView {
 
     private static void insertarActividad() {
         try {
+            System.out.print("Ingrese ID del cultivo: ");
+            int idCultivo = leerEntero();
+
             System.out.print("Ingrese el nombre de la actividad: ");
             String nombre = leerTexto();
 
-            System.out.print("Ingrese el clima ideal: ");
-            String clima = leerTexto();
+            System.out.print("Ingrese el tipo de actividad: ");
+            String tipoActividad = leerTexto();
 
-            System.out.print("Ingrese el tipo de suelo: ");
-            String tipoSuelo = leerTexto();
-
-            System.out.print("Ingrese la frecuencia de riego: ");
-            String frecuencia = leerTexto();
+            System.out.print("Ingrese la fecha programada (YYYY-MM-DD): ");
+            LocalDate fecha = leerFecha();
 
             System.out.print("Ingrese una descripción: ");
             String descripcion = leerTexto();
 
-            System.out.print("Ingrese el estado de la actividad (activo/inactivo): ");
-            String estadoTexto = leerEstado();
-            boolean estado = estadoTexto.equalsIgnoreCase("activo");
+            System.out.print("¿La actividad ya fue realizada? (si/no): ");
+            String estadoTexto = leerTexto();
+            boolean realizada = estadoTexto.equalsIgnoreCase("si");
 
-            Actividad nuevaActividad = new Actividad(nombre, clima, tipoSuelo, frecuencia, descripcion, estado);
+            Actividad nuevaActividad = new Actividad(idCultivo, nombre, tipoActividad, fecha, descripcion, realizada);
             actividadController.setActividad(nuevaActividad);
             System.out.println("Actividad insertada exitosamente.");
 
@@ -76,26 +79,26 @@ public class ActividadView {
             Actividad actividadModificar = buscarPorId(actividades, id, Actividad::getIdActividad, "actividad");
             if (esNulo(actividadModificar)) return;
 
+            System.out.print("Nuevo ID de cultivo (actual: " + actividadModificar.getIdCultivo() + "): ");
+            int idCultivo = leerEntero();
+
             System.out.print("Nuevo nombre (actual: " + actividadModificar.getNombre() + "): ");
             String nombre = leerTexto();
 
-            System.out.print("Nuevo clima (actual: " + actividadModificar.getClima() + "): ");
-            String clima = leerTexto();
+            System.out.print("Nuevo tipo de actividad (actual: " + actividadModificar.getTipoActividad() + "): ");
+            String tipoActividad = leerTexto();
 
-            System.out.print("Nuevo tipo de suelo (actual: " + actividadModificar.getTipoSuelo() + "): ");
-            String tipoSuelo = leerTexto();
-
-            System.out.print("Nueva frecuencia de riego (actual: " + actividadModificar.getFrecuenciaRiego() + "): ");
-            String frecuencia = leerTexto();
+            System.out.print("Nueva fecha programada (actual: " + actividadModificar.getFechaProgramada() + "): ");
+            LocalDate fecha = leerFecha();
 
             System.out.print("Nueva descripción (actual: " + actividadModificar.getDescripcion() + "): ");
             String descripcion = leerTexto();
 
-            System.out.print("Nuevo estado (actual: " + (actividadModificar.isEstado() ? "activo" : "inactivo") + "): ");
-            String estadoTexto = leerEstado();
-            boolean estado = estadoTexto.equalsIgnoreCase("activo");
+            System.out.print("¿La actividad ya fue realizada? (actual: " + (actividadModificar.isRealizada() ? "sí" : "no") + "): ");
+            String estadoTexto = leerTexto();
+            boolean realizada = estadoTexto.equalsIgnoreCase("si");
 
-            Actividad actividadActualizada = new Actividad(id, nombre, clima, tipoSuelo, frecuencia, descripcion, estado);
+            Actividad actividadActualizada = new Actividad(id, idCultivo, nombre, tipoActividad, fecha, descripcion, realizada);
             actividadController.updateActividad(actividadActualizada);
             System.out.println("Actividad modificada exitosamente.");
 
@@ -133,12 +136,12 @@ public class ActividadView {
             System.out.println("\n--- Lista de Actividades ---");
             for (Actividad a : lista) {
                 System.out.println("ID: " + a.getIdActividad()
+                        + " | Cultivo ID: " + a.getIdCultivo()
                         + " | Nombre: " + a.getNombre()
-                        + " | Clima: " + a.getClima()
-                        + " | Suelo: " + a.getTipoSuelo()
-                        + " | Frecuencia: " + a.getFrecuenciaRiego()
+                        + " | Tipo: " + a.getTipoActividad()
+                        + " | Fecha: " + a.getFechaProgramada()
                         + " | Descripción: " + a.getDescripcion()
-                        + " | Estado: " + (a.isEstado() ? "activo" : "inactivo"));
+                        + " | Realizada: " + (a.isRealizada() ? "sí" : "no"));
             }
         } catch (Exception e) {
             System.out.println("Error al consultar las actividades: " + e.getMessage());

@@ -1,13 +1,15 @@
 package org.example.model;
 
+import java.time.LocalDate;
+
 public class Actividad {
     int idActividad;
+    int idCultivo;
     String nombre;
-    String clima;
-    String tipoSuelo;
-    String frecuenciaRiego;
+    String tipoActividad;
+    LocalDate fechaProgramada;
     String descripcion;
-    boolean estado;
+    boolean realizada;
 
     public int getIdActividad() {
         return idActividad;
@@ -15,6 +17,14 @@ public class Actividad {
 
     public void setIdActividad(int idActividad) {
         this.idActividad = idActividad;
+    }
+
+    public int getIdCultivo() {
+        return idCultivo;
+    }
+
+    public void setIdCultivo(int idCultivo) {
+        this.idCultivo = idCultivo;
     }
 
     public String getNombre() {
@@ -25,28 +35,20 @@ public class Actividad {
         this.nombre = nombre;
     }
 
-    public String getClima() {
-        return clima;
+    public String getTipoActividad() {
+        return tipoActividad;
     }
 
-    public void setClima(String clima) {
-        this.clima = clima;
+    public void setTipoActividad(String tipoActividad) {
+        this.tipoActividad = tipoActividad;
     }
 
-    public String getTipoSuelo() {
-        return tipoSuelo;
+    public LocalDate getFechaProgramada() {
+        return fechaProgramada;
     }
 
-    public void setTipoSuelo(String tipoSuelo) {
-        this.tipoSuelo = tipoSuelo;
-    }
-
-    public String getFrecuenciaRiego() {
-        return frecuenciaRiego;
-    }
-
-    public void setFrecuenciaRiego(String frecuenciaRiego) {
-        this.frecuenciaRiego = frecuenciaRiego;
+    public void setFechaProgramada(LocalDate fechaProgramada) {
+        this.fechaProgramada = fechaProgramada;
     }
 
     public String getDescripcion() {
@@ -57,30 +59,30 @@ public class Actividad {
         this.descripcion = descripcion;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public boolean isRealizada() {
+        return realizada;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setRealizada(boolean realizada) {
+        this.realizada = realizada;
     }
 
-    public Actividad(int idActividad, String nombre, String clima, String tipoSuelo, String frecuenciaRiego, String descripcion, boolean estado) {
+    public Actividad(int idActividad, int idCultivo, String nombre, String tipoActividad, LocalDate fechaProgramada, String descripcion, boolean realizada) {
         this.idActividad = idActividad;
+        this.idCultivo = idCultivo;
         this.nombre = nombre;
-        this.clima = clima;
-        this.tipoSuelo = tipoSuelo;
-        this.frecuenciaRiego = frecuenciaRiego;
+        this.tipoActividad = tipoActividad;
+        this.fechaProgramada = fechaProgramada;
         this.descripcion = descripcion;
-        this.estado = estado;
+        this.realizada = realizada;
     }
 
-    public Actividad(String nombre, String clima, String tipoSuelo, String frecuenciaRiego, String descripcion, boolean estado) {
+    public Actividad(int idCultivo, String nombre, String tipoActividad, LocalDate fechaProgramada, String descripcion, boolean realizada) {
+        this.idCultivo = idCultivo;
         this.nombre = nombre;
-        this.clima = clima;
-        this.tipoSuelo = tipoSuelo;
-        this.frecuenciaRiego = frecuenciaRiego;
+        this.tipoActividad = tipoActividad;
+        this.fechaProgramada = fechaProgramada;
         this.descripcion = descripcion;
-        this.estado = estado;
+        this.realizada = realizada;
     }
 }
